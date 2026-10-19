@@ -141,6 +141,7 @@ dependencies = [
     { name = "dotenv" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
+    { name = "python-dotenv" },
 ]
 
 [package.metadata]
@@ -148,6 +149,7 @@ requires-dist = [
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "pydantic", specifier = ">=2.14.1" },
     { name = "pydantic-settings", specifier = ">=2.16.0" },
+    { name = "python-dotenv", specifier = ">=1.2.4" },
 ]
 
 [[package]]

@@ -8,6 +8,7 @@ dependencies = [
     "dotenv>=0.9.9",
     "pydantic>=2.14.1",
     "pydantic-settings>=2.16.0",
+    "python-dotenv>=1.2.4",
 ]
 
 [tool.setuptools.packages.find]
