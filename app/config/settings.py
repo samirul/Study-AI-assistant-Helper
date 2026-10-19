@@ -6,9 +6,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 load_dotenv()
 
 class LLMModelSettings(BaseSettings):
+    """Model settings loaded from environment variables."""
+
     GROQ_API_KEY: str | None = None
     GOOGLE_API_KEY: str | None = None
     PINECONE_API_KEY: str | None = None
+    CHAT_MODEL_GROQ: str | None = None
+    RAG_EMBEDDING_MODEL: str | None = None
 
     model_config = SettingsConfigDict(
         env_file=".env",
