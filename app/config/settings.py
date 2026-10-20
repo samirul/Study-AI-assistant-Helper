@@ -51,4 +51,4 @@ class RecursiveCharacterTextSplitterSettings(BaseSettings):
     RECURSIVE_SPLITTER_CHUNK_SIZE: str | None = None
     RECURSIVE_SPLITTER_CHUNK_OVERLAP: str | None = None
 
-recursive_splitter_settings = RecursiveCharacterTextSplitterSettings
+recursive_splitter_settings = RecursiveCharacterTextSplitterSettings()
