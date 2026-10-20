@@ -13,7 +13,8 @@ def create_text_splitter(output_data: str) -> RecursiveCharacterTextSplitter:
     chunk_size = recursive_splitter_settings.RECURSIVE_SPLITTER_CHUNK_SIZE
     chunk_overlap = recursive_splitter_settings.RECURSIVE_SPLITTER_CHUNK_OVERLAP
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
-    return text_splitter.split_text(output_data)
+    string_chunks = text_splitter.split_text(output_data)
+    return text_splitter.create_documents(string_chunks)
 
 
 class NewPineConeVectorStore:
