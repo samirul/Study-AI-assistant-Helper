@@ -13,7 +13,7 @@ def get_chat_model() -> ChatGroq:
     return ChatGroq(
         model = env_key.CHAT_MODEL_GROQ,
         temperature=0.7,
-        api_key=env_key.GROQ_API_KEY 
+        api_key=env_key.GROQ_API_KEY
     )
 
 
@@ -22,5 +22,5 @@ def get_embedded_model() -> OllamaEmbeddings:
     """Return the configured Ollama embedding model."""
     return OllamaEmbeddings(
         model = env_key.RAG_EMBEDDING_MODEL,
-        dimensions=1536
+        dimensions=int(env_key.RAG_EMBEDDING_MODEL_DIMENSIONAL_VALUE)
 )
