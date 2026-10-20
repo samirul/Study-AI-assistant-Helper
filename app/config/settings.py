@@ -42,3 +42,13 @@ class PineConeSettings(BaseSettings):
 
 
 pine_cone_settings = PineConeSettings()
+
+class RecursiveCharacterTextSplitterSettings(BaseSettings):
+    """Text splitter settings loaded from environment variables."""
+
+    model_config = settings_config_func()
+    
+    RECURSIVE_SPLITTER_CHUNK_SIZE: str | None = None
+    RECURSIVE_SPLITTER_CHUNK_OVERLAP: str | None = None
+
+recursive_splitter_settings = RecursiveCharacterTextSplitterSettings
