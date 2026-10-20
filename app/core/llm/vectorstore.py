@@ -1,3 +1,5 @@
+"""Create Pinecone Vector Store and Text Splitter"""
+
 from pinecone import Pinecone
 from pinecone.models import ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
@@ -50,4 +52,3 @@ class NewPineConeVectorStore:
     def create_vector_store(self) -> PineconeVectorStore:
         """Create and return the configured Pinecone vector store."""
         return self.__create_pinecone_vector_store()
-
