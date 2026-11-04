@@ -1,7 +1,9 @@
 """Custom MessagesState from langgraph.graph"""
 
-from typing import TypedDict, Annotated
+from typing import Annotated, TypedDict
+
 from langgraph.graph.message import add_messages
+
 
 class State(TypedDict):
     """Track the conversation messages, classified intent, and next graph node."""
