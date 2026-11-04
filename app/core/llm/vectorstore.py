@@ -1,5 +1,7 @@
 """Create Pinecone Vector Store and Text Splitter"""
 
+from functools import lru_cache
+
 from pinecone import Pinecone
 from pinecone.models import ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
@@ -53,3 +55,9 @@ class NewPineConeVectorStore:
     def create_vector_store(self) -> PineconeVectorStore:
         """Create and return the configured Pinecone vector store."""
         return self.__create_pinecone_vector_store()
+
+
+@lru_cache()
+def get_vector_store() -> PineconeVectorStore:
+    """Return the cached Pinecone vector store."""
+    return NewPineConeVectorStore().create_vector_store()
