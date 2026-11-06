@@ -1,6 +1,7 @@
 """Build and compile the application LangGraph workflow."""
 
 from langgraph.graph import StateGraph
+from langgraph.checkpoint.memory import InMemorySaver
 from app.core.llm.nodes import (
     classify_intent,
     prompt_llm_chat,
@@ -32,4 +33,4 @@ def create_graph() -> StateGraph:
         builder.add_node(node_name, node)
 
     configure_edges(builder, NODE_NAMES)
-    return builder.compile()
+    return builder.compile(checkpointer=InMemorySaver())
