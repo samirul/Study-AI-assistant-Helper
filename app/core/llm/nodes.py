@@ -7,6 +7,7 @@ from app.core.llm.prompts import (
     INTENT_CLASSIFIER_SYSTEM_PROMPT,
     RAG_SYSTEM_PROMPT,
     SUMMARIZE_SYSTEM_PROMPT,
+    SUMMARIZE_REQUEST_REWRITE_PROMPT,
 )
 from app.core.llm.state import State
 from app.core.llm.vectorstore import get_vector_store
@@ -60,3 +61,13 @@ def prompt_llm_summarize(state: State) -> dict[str, list]:
     ] + state["messages"]
     response = get_chat_model().invoke(messages)
     return {"messages": [{"role": "assistant", "content": response.content}]}
+
+
+def summarize_previous_texts_or_data(state: State) -> dict[str, list]:
+    """Rewrite the latest request as a clear instruction to summarize prior content."""
+    messages = [
+        {"role": "system", "content": SUMMARIZE_REQUEST_REWRITE_PROMPT},
+    ] + state["messages"]
+
+    response = get_chat_model().invoke(messages)
+    return {"messages": [{"role": "user", "content": response.content}]}

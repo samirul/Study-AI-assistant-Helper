@@ -22,3 +22,9 @@ SUMMARIZE_SYSTEM_PROMPT = (
     "context below; if the requested text is not present, state that you "
     "do not have that information.\n\nContext:\n{context}"
 )
+
+SUMMARIZE_REQUEST_REWRITE_PROMPT = (
+    "Rewrite the latest user text-summarization request as a clear instruction "
+    "for summarization, using the conversation history as context. Output only "
+    "the rewritten instruction, without explanation."
+)
