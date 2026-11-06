@@ -16,3 +16,9 @@ RAG_SYSTEM_PROMPT = (
     "If the answer is not in the context, state that you do not have that "
     "information.\n\nContext:\n{context}"
 )
+
+SUMMARIZE_SYSTEM_PROMPT = (
+    "Summarize the provided context clearly and accurately. Use only the "
+    "context below; if the requested text is not present, state that you "
+    "do not have that information.\n\nContext:\n{context}"
+)

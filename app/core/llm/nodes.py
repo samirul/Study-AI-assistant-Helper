@@ -6,6 +6,7 @@ from app.core.llm.prompts import (
     CHAT_SYSTEM_PROMPT,
     INTENT_CLASSIFIER_SYSTEM_PROMPT,
     RAG_SYSTEM_PROMPT,
+    SUMMARIZE_SYSTEM_PROMPT,
 )
 from app.core.llm.state import State
 from app.core.llm.vectorstore import get_vector_store
@@ -41,6 +42,20 @@ def prompt_llm_rag(state: State) -> dict[str, list]:
         {
             "role": "system",
             "content": RAG_SYSTEM_PROMPT.format(context=context),
+        },
+    ] + state["messages"]
+    response = get_chat_model().invoke(messages)
+    return {"messages": [{"role": "assistant", "content": response.content}]}
+
+def prompt_llm_summarize(state: State) -> dict[str, list]:
+    """Summarize relevant documents retrieved for the user's query."""
+    query = state["messages"][-1].content
+    documents = get_vector_store().similarity_search(query=query, k=7)
+    context = "\n".join(f"- {document.page_content}" for document in documents)
+    messages = [
+        {
+            "role": "system",
+            "content": SUMMARIZE_SYSTEM_PROMPT.format(context=context),
         },
     ] + state["messages"]
     response = get_chat_model().invoke(messages)
