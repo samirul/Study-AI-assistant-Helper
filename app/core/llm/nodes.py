@@ -37,7 +37,7 @@ def prompt_llm_chat(state: State) -> dict[str, list]:
 def prompt_llm_rag(state: State) -> dict[str, list]:
     """Generate a response to the latest user question using retrieved context."""
     query = state["messages"][-1].content
-    documents = get_vector_store().similarity_search(query=query, k=7)
+    documents = get_vector_store().similarity_search(query=query, k=3)
     context = "\n".join(f"- {document.page_content}" for document in documents)
     messages = [
         {
@@ -51,7 +51,7 @@ def prompt_llm_rag(state: State) -> dict[str, list]:
 def prompt_llm_summarize(state: State) -> dict[str, list]:
     """Summarize relevant documents retrieved for the user's query."""
     query = state["messages"][-1].content
-    documents = get_vector_store().similarity_search(query=query, k=7)
+    documents = get_vector_store().similarity_search(query=query, k=3)
     context = "\n".join(f"- {document.page_content}" for document in documents)
     messages = [
         {
