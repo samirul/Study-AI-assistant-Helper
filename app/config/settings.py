@@ -52,3 +52,13 @@ class RecursiveCharacterTextSplitterSettings(BaseSettings):
     RECURSIVE_SPLITTER_CHUNK_OVERLAP: str | None = None
 
 recursive_splitter_settings = RecursiveCharacterTextSplitterSettings()
+
+
+class FastAPIBaseSettings(BaseSettings):
+    """FastAPI settings loaded from environment variables."""
+
+    model_config = settings_config_func()
+
+    FAST_API_SECRET_KEY: str | None = None
+
+fast_api_base_settings = FastAPIBaseSettings()
