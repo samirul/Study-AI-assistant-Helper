@@ -2,15 +2,15 @@
 
 from langgraph.graph import StateGraph
 from langgraph.checkpoint.memory import InMemorySaver
-from app.core.llm.nodes import (
+from study_ai_assistant_helper.app.core.llm.nodes import (
     classify_intent,
     prompt_llm_chat,
     prompt_llm_rag,
     prompt_llm_summarize,
     summarize_previous_texts_or_data,
 )
-from app.core.llm.state import State
-from app.graph.edges import configure_edges
+from study_ai_assistant_helper.app.core.llm.state import State
+from study_ai_assistant_helper.app.graph.edges import configure_edges
 
 NODE_REGISTRY = {
     "classifier": classify_intent,

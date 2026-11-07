@@ -1,16 +1,16 @@
 """Nodes used by the LangGraph workflow."""
 
-from app.core.llm.models import get_chat_model
-from app.core.llm.pydantic import IntentClassifier
-from app.core.llm.prompts import (
+from study_ai_assistant_helper.app.core.llm.models import get_chat_model
+from study_ai_assistant_helper.app.core.llm.pydantic import IntentClassifier
+from study_ai_assistant_helper.app.core.llm.prompts import (
     CHAT_SYSTEM_PROMPT,
     INTENT_CLASSIFIER_SYSTEM_PROMPT,
     RAG_SYSTEM_PROMPT,
     SUMMARIZE_SYSTEM_PROMPT,
     SUMMARIZE_REQUEST_REWRITE_PROMPT,
 )
-from app.core.llm.state import State
-from app.core.llm.vectorstore import get_vector_store
+from study_ai_assistant_helper.app.core.llm.state import State
+from study_ai_assistant_helper.app.core.llm.vectorstore import get_vector_store
 
 
 def classify_intent(state: State) -> dict[str, str]:

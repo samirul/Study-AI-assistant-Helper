@@ -3,7 +3,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
-from app.config.settings import fast_api_base_settings
+from study_ai_assistant_helper.app.config.settings import fast_api_base_settings
 
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key=fast_api_base_settings.FAST_API_SECRET_KEY)

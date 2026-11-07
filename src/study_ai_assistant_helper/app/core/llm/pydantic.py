@@ -2,7 +2,7 @@
 
 from typing import Literal
 from pydantic import BaseModel, Field
-from app.core.llm.prompts import INTENT_CLASSIFIER_PROMPT_DESCRIPTION
+from study_ai_assistant_helper.app.core.llm.prompts import INTENT_CLASSIFIER_PROMPT_DESCRIPTION
 
 class IntentClassifier(BaseModel):
     """Classify whether a user message is chat, knowledge-seeking, or summarization."""

@@ -3,7 +3,7 @@
 from functools import lru_cache
 from langchain_groq import ChatGroq
 from langchain_ollama import OllamaEmbeddings
-from app.config.settings import llm_model_settings
+from study_ai_assistant_helper.app.config.settings import llm_model_settings
 
 env_key = llm_model_settings
 

@@ -1,7 +1,7 @@
 """Configure intent routing and edges for the application graph."""
 
 from langgraph.graph import END, START
-from app.core.llm.state import State
+from study_ai_assistant_helper.app.core.llm.state import State
 
 
 INTENT_ROUTES = {

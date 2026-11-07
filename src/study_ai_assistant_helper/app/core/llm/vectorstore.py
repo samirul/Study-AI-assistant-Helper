@@ -6,8 +6,11 @@ from pinecone import Pinecone
 from pinecone.models import ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from app.config.settings import pine_cone_settings, recursive_splitter_settings
-from app.core.llm.models import get_embedded_model
+from study_ai_assistant_helper.app.config.settings import (
+    pine_cone_settings,
+    recursive_splitter_settings,
+)
+from study_ai_assistant_helper.app.core.llm.models import get_embedded_model
 
 
 def create_text_splitter(output_data: str) -> RecursiveCharacterTextSplitter:
