@@ -1,7 +1,7 @@
 """Nodes used by the LangGraph workflow."""
 
-from study_ai_assistant_helper.app.core.llm.models import get_chat_model
-from study_ai_assistant_helper.app.core.llm.pydantic import IntentClassifier
+from study_ai_assistant_helper.app.core.llm.providers import get_chat_model
+from study_ai_assistant_helper.app.core.llm.schemas import IntentClassifier
 from study_ai_assistant_helper.app.core.llm.prompts import (
     CHAT_SYSTEM_PROMPT,
     INTENT_CLASSIFIER_SYSTEM_PROMPT,

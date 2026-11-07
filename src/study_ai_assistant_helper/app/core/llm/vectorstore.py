@@ -10,7 +10,7 @@ from study_ai_assistant_helper.app.config.settings import (
     pine_cone_settings,
     recursive_splitter_settings,
 )
-from study_ai_assistant_helper.app.core.llm.models import get_embedded_model
+from study_ai_assistant_helper.app.core.llm.providers import get_embedded_model
 
 
 def create_text_splitter(output_data: str) -> RecursiveCharacterTextSplitter:

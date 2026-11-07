@@ -1,4 +1,4 @@
-"""Models configuration"""
+"""Language model and embedding providers."""
 
 from functools import lru_cache
 from langchain_groq import ChatGroq
