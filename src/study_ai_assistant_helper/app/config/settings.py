@@ -2,6 +2,7 @@
 
 import os
 from dotenv import load_dotenv
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 load_dotenv()
@@ -68,3 +69,22 @@ class FastAPIBaseSettings(BaseSettings):
     FAST_API_SECRET_KEY: str
 
 fast_api_base_settings = FastAPIBaseSettings()
+
+
+class DatabaseSettings(BaseSettings):
+    """PostgreSQL connection and async connection-pool settings."""
+
+    model_config = settings_config_func()
+
+    POSTGRES_HOST: str = "localhost"
+    POSTGRES_PORT: int = Field(default=5432, gt=0, le=65535)
+    POSTGRES_DB: str
+    POSTGRES_USER: str
+    POSTGRES_PASSWORD: SecretStr
+    DB_POOL_SIZE: int = Field(default=5, gt=0)
+    DB_MAX_OVERFLOW: int = Field(default=10, ge=0)
+    DB_POOL_TIMEOUT_SECONDS: float = Field(default=30.0, gt=0)
+    DB_POOL_RECYCLE_SECONDS: int = Field(default=1800, gt=0)
+
+
+database_settings = DatabaseSettings()  # pyright: ignore[reportCallIssue]
