@@ -1,15 +1,22 @@
 """Adding all environment variables"""
 
+import os
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 load_dotenv()
 
+def is_production() -> bool:
+    """Return whether the deployment mode is production."""
+    mode = os.getenv("DEPLOYMENT_MODE", "development").strip().lower()
+    if mode not in {"development", "dev", "production", "prod"}:
+        raise ValueError(f"Invalid DEPLOYMENT_MODE: {mode!r}")
+    return mode in {"production", "prod"}
 
 def settings_config_func() -> SettingsConfigDict:
     """Return the shared settings configuration for environment variables."""
     return SettingsConfigDict(
-        env_file=".env",
+        env_file=".env.prod" if is_production() else ".env.dev",
         env_file_encoding="utf-8",
         extra="ignore",
     )
@@ -53,12 +60,11 @@ class RecursiveCharacterTextSplitterSettings(BaseSettings):
 
 recursive_splitter_settings = RecursiveCharacterTextSplitterSettings()
 
-
 class FastAPIBaseSettings(BaseSettings):
     """FastAPI settings loaded from environment variables."""
 
     model_config = settings_config_func()
 
-    FAST_API_SECRET_KEY: str | None = None
+    FAST_API_SECRET_KEY: str
 
 fast_api_base_settings = FastAPIBaseSettings()
